@@ -29,6 +29,7 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
+				<cloudHubDeployment>
 				<username>Seble232</username>
 				<password>Mekuria12@1</password>
 				<environment>Sandbox</environment>
@@ -37,6 +38,7 @@
 				<applicationName>5-8-20Flow</applicationName>
 				<muleVersion>4.3.0</muleVersion>
 				<ObjectStoreV2>true</ObjectStoreV2>
+				</cloudHubDeployment>
 				</configuration>
 			</plugin>
 		</plugins>
