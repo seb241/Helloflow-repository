@@ -29,6 +29,14 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
+				<username>Seble232</username>
+				<password>Mekuria12@1</password>
+				<environment>Sandbox</environment>
+				<Workers>1</Workers>
+				<WorkerType>Micro</WorkerType>
+				<applicationName>5-8-20Flow</applicationName>
+				<muleVersion>4.3.0</muleVersion>
+				<ObjectStoreV2>true</ObjectStoreV2>
 				</configuration>
 			</plugin>
 		</plugins>
