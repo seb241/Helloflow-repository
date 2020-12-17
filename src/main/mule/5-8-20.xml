@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:wsc="http://www.mulesoft.org/schema/mule/wsc"
+	xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/wsc http://www.mulesoft.org/schema/mule/wsc/current/mule-wsc.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd">
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="f5d65f6d-c149-45b2-b8e6-9f84d82caf38" >
+		<http:request-connection host="ilt.learn.mulesoft.com" port="80" connectionIdleTimeout="30000000"/>
+	</http:request-config>
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="f6615b1a-648f-424b-9f7a-9272d5648449" >
+		<http:listener-connection host="0.0.0.0" port="8084" />
+	</http:listener-config>
+	<file:config name="File_Config" doc:name="File Config" doc:id="c72a922e-6ad5-4796-a4bf-12b79b4a1f2e" >
+		<file:connection workingDir="C:\AAF\flight" />
+	</file:config>
+	<flow name="5-8-20Flow" doc:id="fc5b0296-88a4-44d1-b777-6951754d331c" >
+		<http:listener doc:name="Listener" doc:id="69149557-8c5a-4d3b-98bd-3a57aa86fc8f" config-ref="HTTP_Listener_config" path="/SOAP"/>
+		<ee:transform doc:name="Transform Message" doc:id="5f245ff7-0d75-47aa-aa47-a5885dfda9bf" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+
+payload 
+
+
+  ]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="d8b79589-5fe5-45df-b746-1241aee02aa5" />
+	</flow>
+</mule>
